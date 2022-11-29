@@ -3,8 +3,10 @@ import html2canvas from 'html2canvas'
 import domtoimage from 'dom-to-image-more'
 
 export const domToImageHandle = (eleId) => {
+  const div = document.getElementById(eleId)
+  // debugger
   domtoimage
-    .toPng(document.getElementById(eleId))
+    .toPng(div)
     .then(function (dataUrl) {
       let a = document.createElement('a')
       a.href = dataUrl
@@ -27,7 +29,7 @@ export const html2canvasHandle = (eleId) => {
     .then((canvas) => {
       console.log('html2canvas success')
       //截图用img元素承装，显示在页面的上
-      const imgData = canvas.toDataURL('image/png') // toDataURL :图片格式转成 base64
+      const imgData = canvas.toDataURL('image/jpeg') // toDataURL :图片格式转成 base64
       //回传子组件base64
       //  cab(this.imgUrl)
       //如果你需要下载截图，可以使用a标签进行下载
